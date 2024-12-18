@@ -10,9 +10,10 @@ def gamble():
   dealers_hidden = random.randint(1,10)
   total = card1 + card2
   dtotal = dealers_show + dealers_hidden
+  fdtotal = dtotal + newcard
 
   print("dealer has a", dealers_show)
-  print("Your cards are", card1, "and", card2, ",you're total is",       total)
+  print("Your cards are", card1, "and", card2, ",you're total is", total)
   if total =="21":
     print("well played")
   if total > 21:
@@ -29,10 +30,14 @@ def gamble():
         break
     if answer == "stand":
       print("dealers hidden card is", dealers_hidden)
-      while dtotal < 15:
+      while dtotal < 17:
         print("Dealer must hit")
-        print("dealers total is", dtotal + newcard)
-        if dtotal + newcard > total:
+        print("dealers total is", fdtotal)
+        if fdtotal > total or fdtotal < 21:
             print("dealer stands")        
         break
+        if fdtotal > total:
+          print("dealer wins ")
+        if fdtotal < total:
+          print("you wins ")
 gamble()
